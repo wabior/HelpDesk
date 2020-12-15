@@ -25,6 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tickets', 'TicketController@index');
 
+Route::get('/tickets/user', 'TicketController@indexUser');
+
 Route::get('/tickets/create', 'TicketController@create');
 
 Route::get('/tickets/{id}', 'TicketController@show');

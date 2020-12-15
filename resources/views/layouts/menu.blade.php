@@ -46,9 +46,9 @@
 
                                 <a class="nav-item nav-link" href="{{ url('/tickets/create') }}">Nowe zgłoszenie</a>
                                 <a class="nav-item nav-link" href="{{ url('/tickets') }}">Zgłoszenia</a>
-                                <a class="nav-item nav-link" href="{{ url('/users') }}">Użytkownicy</a>
+                                {{-- <a class="nav-item nav-link" href="{{ url('/users') }}">Użytkownicy</a> --}}
                                 <span class="nav-item nav-link mt-2 pr-1">Użytkownik:</span>
-                                <a class="nav-item nav-link pl-0" href="">{{ Auth::user()->name }} {{ Auth::user()->surname }}</a>
+                                <a class="nav-item nav-link pl-0" href="{{ url('/tickets/user') }}">{{ Auth::user()->name }} {{ Auth::user()->surname }}</a>
                                 <a class="nav-item nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">

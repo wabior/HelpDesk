@@ -15,6 +15,17 @@ class TicketController extends Controller
         return view('tickets.index', compact('tickets'));
     }
 
+    public function indexUser(){
+        $user_id = Auth::id() ?? 0;
+        $tickets = Ticket::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+        return view('tickets.indexUser', compact('tickets'));
+    }
+
+    // $flights = App\Flight::where('active', 1)
+    // ->orderBy('name', 'desc')
+    // ->take(10)
+    // ->get();
+
     public function create(){
         $user_id = Auth::id() ?? 0;
         return view('tickets.create',['user_id' => $user_id]);

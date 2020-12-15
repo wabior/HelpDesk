@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h2 class="mb-3 ml-1">Lista zgłoszeń:</h2>
+    <h2 class="mb-3 ml-1">Twoje zgłoszenia:</h2>
 
     @foreach ($tickets as $ticket)
 
@@ -18,6 +18,7 @@
             </span>
 
         </div>
+
 
                 {{-- tytuł --}}
         <div class="list-group col-10 col-md-3 ">
