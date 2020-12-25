@@ -17,7 +17,7 @@
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
-                margin: 0;
+                /* margin: 0; */
             }
 
             .navbar a{
@@ -34,27 +34,27 @@
             <div class="navbar">
 
                 @if (Route::has('login'))
-                @auth
+                    @auth
 
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav class="navbar container navbar-expand-lg navbar-light bg-light  ">
                         <a class="navbar-brand mr-5" href="{{ url('/') }}">System zgłoszeń</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
+                        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                            <div class="navbar-nav ml-auto">
 
                                 <a class="nav-item nav-link" href="{{ url('/tickets/create') }}">Nowe zgłoszenie</a>
                                 <a class="nav-item nav-link" href="{{ url('/tickets') }}">Zgłoszenia</a>
                                 {{-- <a class="nav-item nav-link" href="{{ url('/users') }}">Użytkownicy</a> --}}
                                 <span class="nav-item nav-link mt-2 pr-1">Użytkownik:</span>
                                 <a class="nav-item nav-link pl-0" href="{{ url('/tickets/user') }}">{{ Auth::user()->name }} {{ Auth::user()->surname }}</a>
-                                <a class="nav-item nav-link" href="{{ route('logout') }}"
+                                <a class="nav-item nav-link " href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Wyloguj') }}
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="form-inline">
                                     @csrf
                                 </form>
                             </div>
@@ -62,14 +62,18 @@
                     </nav>
 
                     @else
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light mx-auto">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="{{ route('login') }}">Zaloguj</a>
+                    <nav class="navbar navbar-light bg-light mx-auto">
+
+                        <div class="navbar-nav flex-row">
+
+                        <a class="nav-item nav-link p-3" href="{{ route('login') }}">Zaloguj</a>
 
                         @if (Route::has('register'))
-                            <a class="nav-item nav-link" href="{{ route('register') }}">Rejestracja</a>
+                            <a class="nav-item nav-link p-3" href="{{ route('register') }}">Rejestracja</a>
                         @endif
-                    </div>
+
+    </div>
+
                     </nav>
 
                 @endauth

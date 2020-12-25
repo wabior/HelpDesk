@@ -4,14 +4,57 @@
 
     <h2 class="mb-3 ml-1">Lista zgłoszeń:</h2>
 
+    <div class="row mt-1 mb-1 ml-1 d-none d-lg-flex">
+
+        <div class="col-2 col-md-1 text-center">
+
+            ID
+
+        </div>
+
+                {{-- tytuł --}}
+        <div class="col-10 col-md-3">
+
+            Tytuł
+
+        </div>
+
+                {{-- user name --}}
+        <div class="col-6  col-md-2">
+
+            Zgłaszający
+
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+
+            Zgłoszono
+
+        </div>
+
+            <div class="col-6 col-md-2">
+
+              Status
+
+            </div>
+
+            <div class="-6 col-md-2">
+
+
+            </div>
+
+    </div>
+
+
+
+        {{-- lista zgłoszeń --}}
     @foreach ($tickets as $ticket)
 
-
-    <div class="row mt-1 mb-2 ml-1">
+    <div class="row mt-1 mb-1 ml-1">
 
         <div class="list-group col-2 col-md-1">
 
-            <span class="list-group-item list-group-item-action p-2 pl-3">
+            <span class="list-group-item list-group-item-action p-2  text-center">
 
                 {{ $ticket->id }}
 
@@ -43,11 +86,22 @@
 
         <div class="list-group col-6 col-md-3 col-lg-2">
 
-            <p class="list-group-item p-2 pl-3">
+            <p class="list-group-item p-2 pl-3
 
-                {{ $ticket->created_at->format('d.m.y') }}
+            @if (($ticket->created_at->diffInHours() >= 48)
 
-                {{ $ticket->created_at->format('h:i') }}
+                and
+
+                ($ticket->status->id == '1'))
+
+                text-danger font-weight-bold @endif ">
+
+                {{-- {{ $ticket->created_at->format('d.m.y') }}
+
+                {{ $ticket->created_at->format('h:i') }} --}}
+
+                {{ $ticket->created_at->diffForHumans() }}
+
 
             </p>
 
@@ -62,10 +116,9 @@
 
             </div>
 
-            <div class="list-group col-6 col-md-2 ">
+            <div class="list-group col-6 col-md-2">
 
-                <a href='{{ url("tickets/$ticket->id") }}' class="list-group-item list-group-item-action text-center p-2">szczegóły</a>
-
+                <a href='{{ url("tickets/$ticket->id") }}' class="list-group-item list-group-item-action text-center p-2 ">szczegóły</a>
 
             </div>
 
