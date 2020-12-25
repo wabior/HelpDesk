@@ -9,9 +9,10 @@
 
     <div class="row mt-1 mb-2 ml-1">
 
-        <div class="list-group col-2 col-md-1">
+                {{-- id --}}
+        <div class="list-group col-2 col-md-1 px-0">
 
-            <span class="list-group-item list-group-item-action p-2 pl-3">
+            <span class="list-group-item list-group-item-action py-2 px-0 text-center">
 
                 {{ $ticket->id }}
 
@@ -32,19 +33,19 @@
         </div>
 
                 {{-- user name --}}
-        <div class="list-group col-6  col-md-2">
+        <div class="list-group col-6 col-md-2 my-0 p-0">
 
-            <a href="#" class="list-group-item list-group-item-action p-2 pl-3">
+            <a href="#" class="list-group-item list-group-item-action p-2 pl-3 mb-0">
 
                 {{ $ticket->user->name }}  {{ $ticket->user->surname }}
 
             </a>
 
         </div>
+                {{-- createdAt --}}
+        <div class="list-group col-6 col-md-3 col-lg-2 my-0 py-0">
 
-        <div class="list-group col-6 col-md-3 col-lg-2">
-
-            <p class="list-group-item p-2 pl-3">
+            <p class="list-group-item p-2 pl-3 mb-0">
 
                 {{ $ticket->created_at->format('d.m.y') }}
 
@@ -54,7 +55,7 @@
 
         </div>
 
-            <div class="list-group col-6 col-md-2">
+            <div class="list-group col-6 col-md-2 my-0 p-0">
 
                 <p class="list-group-item text-center p-2
                     @if ($ticket->status->id == '1') list-group-item-warning font-weight-bold
@@ -63,7 +64,7 @@
 
             </div>
 
-            <div class="list-group col-6 col-md-2 ">
+            <div class="list-group col-6 col-md-2 my-0 py-0">
 
                 <a href='{{ url("tickets/$ticket->id") }}' class="list-group-item list-group-item-action text-center p-2">szczegóły</a>
 
