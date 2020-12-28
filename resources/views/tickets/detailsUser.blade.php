@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="row mt-3">
 
         <div class="col-12 col-md-6">
@@ -15,14 +14,16 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ $ticket->title }}</h5>
                   <p class="card-text my-4">{{ $ticket->message }}</p>
+
+                  @if (Auth::user()->id == $ticket->user->id)
                   <form method="POST" action=" {{ url('/tickets/update/') }} ">
                     {{csrf_field()}}
                     {{ method_field('PATCH') }}
                     <button type="submit" class="btn btn-secondary w-100">Zamknij zgłoszenie</button>
                     <input type="hidden" name="id" value="{{ $ticket->id }}">
                     <input type="hidden" name="status_id" value="4">
-
                 </form>
+                @endif
                 </div>
             </div>
 
