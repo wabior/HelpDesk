@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1>admin</h1>
+
     <span class="mr-4">Szczegóły zgłoszenia Id: {{ $ticket->id }}</span>
 
     <div class="row mt-3">
@@ -26,9 +28,9 @@
                 {{csrf_field()}}
                 {{ method_field('PATCH') }}
 
-                <div class="form-row justify-content-between mt-3">
+                <div class="form-row mt-3">
 
-                    <div class="form-row d-flex">
+                    <div class="form-row d-flex ml-1">
 
                         <label class="mb-0" for="status_id">Status</label>
                         <select class="form-control d-flex mr-3" id="status_id" name="status_id">
@@ -90,7 +92,6 @@
             <ul class="list-group">
 
                 @if (!empty($notes[0]))
-                {{-- {{ dd($notes)}} --}}
 
                     @foreach ($notes as $note)
 

@@ -36,8 +36,10 @@ class TicketController extends Controller
         $statuses = Status::all();
         $notes = Note::orderBy('created_at', 'desc')->where('Ticket_id', '=', $id)->get();
         $user_id = Auth::id();
-
-        return view('tickets.details', compact('ticket','statuses','notes'),['user_id' => $user_id]);
+        if (Auth::user()->admin)
+            return view('tickets.details', compact('ticket','statuses','notes'),['user_id' => $user_id]);
+        else
+            return view('tickets.detailsUser', compact('ticket','statuses','notes'),['user_id' => $user_id]);
     }
 
     public function update(Request $request){
@@ -48,7 +50,7 @@ class TicketController extends Controller
 
         $ticket->save();
 
-        return $this->index();
+        return $this->indexUser();
     }
 
     public function store(Request $request){
