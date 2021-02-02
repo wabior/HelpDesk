@@ -21,11 +21,9 @@ Auth::routes();
 
 Route::get('/users', 'UserController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tickets', 'TicketController@index')->name('tickets_all');
 
-Route::get('/tickets', 'TicketController@index');
-
-Route::get('/tickets/user', 'TicketController@indexUser');
+Route::get('/tickets/user', 'TicketController@indexUser')->name('tickets_user');
 
 Route::get('/tickets/create', 'TicketController@create');
 
